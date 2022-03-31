@@ -12,9 +12,7 @@ function Home() {
         "flex h-screen flex-col lg:grid lg:grid-cols-10 bg-white/10 bg-dark-img"
       }
     >
-      <div
-        className={"bg-gradient-to-br from-cyan-800 to-rose-500 lg:col-span-4"}
-      >
+      <div className={"lg:col-span-4"}>
         <div
           className={
             "flex flex-col items-center justify-center py-2 lg:min-h-screen"
