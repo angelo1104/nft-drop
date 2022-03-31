@@ -7,7 +7,9 @@ function Home() {
   const disconnect = useDisconnect();
 
   return (
-    <div className={"flex h-screen flex-col lg:grid lg:grid-cols-10"}>
+    <div
+      className={"flex h-screen flex-col lg:grid lg:grid-cols-10 bg-white/10"}
+    >
       <div
         className={"bg-gradient-to-br from-cyan-800 to-rose-500 lg:col-span-4"}
       >
@@ -37,12 +39,18 @@ function Home() {
         </div>
       </div>
 
-      <div className={"flex flex-col flex-1 p-12 lg:col-span-6 pb-12"}>
+      <div
+        className={
+          "flex flex-col flex-1 p-12 lg:col-span-6 pb-12 backdrop-blur-md"
+        }
+      >
         {/*Header*/}
         <header className={"flex items-center justify-between"}>
           <h1 className={"w-52 cursor-pointer text-xl font-extralight sm:w-80"}>
             The{" "}
-            <span className={"font-extrabold underline decoration-pink-600/50"}>
+            <span
+              className={"font-extrabold underline decoration-white-600/50"}
+            >
               PAPAFAM
             </span>{" "}
             NFT Market Place
@@ -51,7 +59,7 @@ function Home() {
           <button
             onClick={address ? disconnect : connectWithMetamask}
             className={
-              "rounded-full bg-rose-400 text-white px-4 py-2 text-xs font-bold lg:px-5 lg:p-y-3 lg:text-base"
+              "rounded-full bg-gray-500 text-gray-200 text-white px-4 py-2 text-xs font-medium lg:px-5 lg:p-y-3 lg:text-base"
             }
           >
             {address ? "Sign Out" : "Sign In"}
@@ -61,7 +69,7 @@ function Home() {
         <hr className={"my-2 border"} />
 
         {address && (
-          <p className={"text-center text-sm text-rose-400"}>
+          <p className={"text-center text-sm text-gray-300"}>
             You&apos;re logged in with wallet{" "}
             {`${address.substring(0, 5)}...${address.substring(
               address.length - 5
@@ -88,14 +96,14 @@ function Home() {
             The PAPAFAM Ape Coding Club | NFT Drop
           </h1>
 
-          <p className={"pt-2 text-xl text-green-500"}>
+          <p className={"pt-2 text-xl text-gray-300"}>
             13/21 NFT&apos;s claimed
           </p>
         </div>
 
         <button
           className={
-            "py-4 w-11/12 mt-10 mx-auto w-full bg-red-600 text-white rounded-full font-bold"
+            "py-4 w-11/12 mt-10 mx-auto w-full bg-gray-500 text-gray-300 rounded-full font-bold"
           }
         >
           Mint NFT (0.01 ETH)

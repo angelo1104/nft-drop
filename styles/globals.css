@@ -4,6 +4,11 @@
 
 html,
 body {
+  background: url("https://wallpaperaccess.com/full/334698.jpg");
+  background-size: cover;
+  color: white;
+  background-repeat: no-repeat;
+  background-position: center;
   padding: 0;
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
