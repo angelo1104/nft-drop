@@ -18,11 +18,7 @@ function Home() {
             "flex flex-col items-center justify-center py-2 lg:min-h-screen"
           }
         >
-          <div
-            className={
-              "bg-gradient-to-br from-yellow-400 to-purple-500 p-2 rounded-xl"
-            }
-          >
+          <div className={"cool p-2 rounded-xl"}>
             <img
               className={"w-44 rounded-xl object-cover lg:h-96 lg:w-72"}
               src="https://links.papareact.com/8sg"
