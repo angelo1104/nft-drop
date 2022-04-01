@@ -5,7 +5,7 @@
 .bg-dark-img {
   background: url("https://wallpaperaccess.com/full/334698.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   color: white;
 }
