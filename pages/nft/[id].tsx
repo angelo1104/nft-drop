@@ -14,6 +14,8 @@ import { Gradient } from "../../components/Gradient";
 import Button from "../../components/Button";
 import { BigNumber } from "ethers";
 import { toast, Toaster } from "react-hot-toast";
+import Modal from "react-modal";
+import { NFTMetadataOwner } from "@thirdweb-dev/sdk";
 
 interface Props {
   collection: Collection;
@@ -105,6 +107,8 @@ function Home({ collection }: Props) {
   const [totalSupply, setTotalSupply] = useState<BigNumber>();
   const [loading, setLoading] = useState<boolean>(true);
   const [priceInEth, setPriceInEth] = useState<string>("");
+  const [modal, setModal] = useState<boolean>(false);
+  const [metadata, setMetadata] = useState<null | NFTMetadataOwner>(null);
 
   const nftDrop = useNFTDrop(collection.address);
 
@@ -165,6 +169,7 @@ function Home({ collection }: Props) {
       const claimedTokenId = tx[0].id;
       const claimedNFT = await tx[0].data();
 
+      setMetadata(claimedNFT);
       console.log("rec", receipt);
       console.log("tok", claimedTokenId);
       console.log("nft", claimedNFT);
@@ -193,6 +198,8 @@ function Home({ collection }: Props) {
           padding: "20px",
         },
       });
+
+      setModal(true);
     } catch (e) {
       console.log(e);
       toast("Whoops, Something went wrong :(", {
@@ -227,6 +234,71 @@ function Home({ collection }: Props) {
       <GradientCanvas data-transition-in id={"gradient-canvas-id"} />
 
       <Toaster position={"bottom-right"} />
+
+      <Modal
+        isOpen={modal}
+        onRequestClose={() => setModal(false)}
+        style={{
+          overlay: {
+            backdropFilter: "blur(12px)",
+            background: "rgba(255, 255, 255, 0.1)",
+          },
+          content: {
+            backdropFilter: "blur(12px)",
+            background: "rgba(255, 255, 255, 0.4)",
+            border: "none",
+          },
+        }}
+      >
+        <div
+          className={
+            "grid grid-cols-10 overflow-y-scroll h-full scrollbar relative p-10"
+          }
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 absolute top-3 right-3 cursor-pointer"
+            onClick={() => setModal(false)}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+
+          <img
+            className={"col-span-3 h-78 flex w-full rounded-3xl object-cover"}
+            src={metadata?.metadata?.image}
+            alt=""
+          />
+
+          <div className={"col-span-7 flex flex-col px-32 space-y-6"}>
+            <div className={"space-y-3"}>
+              <p className={"text-3xl font-extrabold px-3"}>Name</p>
+              <p className={"bg-gray-300 p-3 rounded-xl text-gray-500"}>
+                {metadata?.metadata?.name}
+              </p>
+            </div>{" "}
+            <div className={"space-y-3"}>
+              <p className={"text-3xl font-extrabold px-3"}>Description</p>
+              <p className={"bg-gray-300 p-3 rounded-xl text-gray-500"}>
+                {metadata?.metadata?.description}
+              </p>
+            </div>{" "}
+            <div className={"space-y-3"}>
+              <p className={"text-3xl font-extrabold px-3"}>URI</p>
+              <p className={"bg-gray-300 p-3 rounded-xl text-gray-500"}>
+                {metadata?.metadata?.uri}
+              </p>
+            </div>{" "}
+          </div>
+        </div>
+      </Modal>
 
       <Container className={" p-32 pt-16"}>
         <header

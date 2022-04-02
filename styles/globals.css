@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+}
+
 .bg-dark-img {
   background: url("https://wallpaperaccess.com/full/334698.jpg");
   background-size: cover;
