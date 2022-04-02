@@ -36,7 +36,7 @@ const Container = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: lightgray;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
   }
 

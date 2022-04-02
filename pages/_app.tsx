@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>Create next app</title>
       </Head>
+
       <Component {...pageProps} />
     </ThirdwebProvider>
   );

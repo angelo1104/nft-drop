@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "@sanity/image-url": "^1.0.1",
     "@thirdweb-dev/react": "^2.0.3",
     "@thirdweb-dev/sdk": "^2.0.20",
