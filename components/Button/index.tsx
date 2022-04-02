@@ -18,13 +18,26 @@ const GradientCanvas = styled.canvas`
 const StyledButton = styled.button`
   transition: all 0.1s ease-out;
 
+  .bruh {
+    width: 100%;
+    height: 100%;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   :hover {
     filter: drop-shadow(0px 5px 5px #000);
   }
 
   :disabled {
     filter: none !important;
-    cursor: progress;
+    cursor: default;
+
+    .bruh {
+      background: rgb(156, 163, 175);
+    }
   }
 `;
 
@@ -44,7 +57,7 @@ function Button({ children, ...props }: any) {
       }
     >
       <GradientCanvas id={"button-gradient"} />
-      {children}
+      <div className={"bruh"}>{children}</div>
     </StyledButton>
   );
 }
